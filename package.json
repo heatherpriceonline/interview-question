@@ -1,0 +1,23 @@
+{
+  "name": "interview-question",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heatherpriceonline/interview-question.git"
+  },
+  "author": "Heather Price",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heatherpriceonline/interview-question/issues"
+  },
+  "homepage": "https://github.com/heatherpriceonline/interview-question#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
