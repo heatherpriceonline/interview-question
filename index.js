@@ -1,10 +1,23 @@
 const express = require('express');
 const app = express();
 const port = 8080;
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: __dirname });
-});
+module.exports = app.listen(8080);
 
-app.listen(port, () => {
-  console.log(`Now listening on port ${port}`);
+const boatSlips = [
+  {
+    slipNumber: 1,
+    vacant: true,
+  },
+  {
+    slipNumber: 2,
+    vacant: true,
+  },
+  {
+    slipNumber: 3,
+    vacant: true,
+  },
+];
+app.get('/boat-slips', (req, res) => {
+  res.send(boatSlips);
 });
+app.post('/boat-slips', (req, res) => {});
