@@ -36,7 +36,6 @@ describe('POST /boat-slips', function () {
       .post('/boat-slips')
       .field('vesselName', 'U.S.S. Charelston')
       .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
       .expect(200)
       .then((response) => {
         assert(response.body, [
@@ -53,7 +52,6 @@ describe('POST /boat-slips', function () {
       .post('/boat-slips')
       .field('vesselName', 'U.S.S. Charelston')
       .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
       .expect(409)
       .then((response) => {
         assert(response.body.message, 'There are no available boat slips.');
@@ -65,20 +63,16 @@ describe('POST /boat-slips', function () {
 
 describe('PUT /boat-slips', function () {
   it('vacates a vessel from a specific boatslip', function (done) {
-    request(app)
-      .put('/boat-slips/1/vacate')
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(204, done);
+    //TODO - test data gets purged.
+    request(app).put('/boat-slips/1/vacate').expect(204, done);
   });
   it('returns a 409 when a boatslip is empty', function (done) {
     request(app)
       .put('/boat-slips/1/vacate')
       .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
       .expect(409)
       .then((response) => {
-        assert(response.body.message, 'Boat slip 1 is currently vacant');
+        assert(response.body, 'Boat slip 1 is currently vacant');
         done();
       })
       .catch((err) => done(err));
