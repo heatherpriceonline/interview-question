@@ -21,9 +21,19 @@ const getBoatSlips = (req, res) => {
 const postBoatSlip = (req, res) => {
   const slips = boatSlips;
   const vesselName = req.body.vesselName;
+  if (!vesselName) {
+    return res
+      .status(400)
+      .send('Please provide a vessel name using the key vesselName');
+  }
+  if (typeof vesselName !== 'string') {
+    return res.status(400).send('Please provide a valid vessel name');
+  }
   const firstVacant = slips.find((e) => e.vacant == true);
   if (!firstVacant) {
-    return res.status(409).send('There are no available boat slips.');
+    return res
+      .status(409)
+      .send({ statusCode: 409, Message: 'There are no available boat slips.' });
   }
   firstVacant.vacant = false;
   firstVacant.vesselName = vesselName;
@@ -32,6 +42,11 @@ const postBoatSlip = (req, res) => {
 
 const vacateBoatSlip = (req, res) => {
   const slipToVacate = boatSlips.find((e) => e.slipNumber == req.params.id);
+  if (!slipToVacate) {
+    return res
+      .status(400)
+      .send('Boat slip ' + req.params.id + ' does not exist');
+  }
   if (slipToVacate.vacant) {
     return res
       .status(409)

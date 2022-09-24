@@ -38,7 +38,7 @@ describe('POST /boat-slips', function () {
     // POST a vessel to a slip
     request(app)
       .post('/boat-slips')
-      .field('vesselName', 'U.S.S. Charelston')
+      .send({ vesselName: 'U.S.S. Charelston' })
       .set('Accept', 'application/json')
       .expect(200)
       .then((response) => {
@@ -57,7 +57,7 @@ describe('POST /boat-slips', function () {
     // POST a boat to the remaining slips that have not been cleaned up
     request(app)
       .post('/boat-slips')
-      .field('vesselName', 'U.S.S. Charelston')
+      .send({ vesselName: 'U.S.S. Charelston' })
       .set('Accept', 'application/json')
       .expect(200)
       .then((response) => {
@@ -66,25 +66,27 @@ describe('POST /boat-slips', function () {
             slipNumber: 2,
           },
         ]);
+        // done();
       })
       .catch((err) => done(err));
     request(app)
       .post('/boat-slips')
-      .field('vesselName', 'U.S.S. Charelston')
+      .send({ vesselName: 'U.S.S. Charelston' })
       .set('Accept', 'application/json')
       .expect(200)
       .then((response) => {
         assert(response.body, [
           {
-            slipNumber: 3,
+            slipNumber: 1,
           },
         ]);
+        // done();
       })
       .catch((err) => done(err));
     // attempt to post another boat to a slip
     request(app)
       .post('/boat-slips')
-      .field('vesselName', 'Yamato')
+      .send({ vesselName: 'U.S.S. Charelston' })
       .set('Accept', 'application/json')
       .expect(409)
       .then((response) => {
@@ -101,7 +103,7 @@ describe('PUT /boat-slips', function () {
     // POST a boat in a slip
     request(app)
       .post('/boat-slips')
-      .field('vesselName', 'U.S.S. Charelston')
+      .send({ vesselName: 'U.S.S. Charelston' })
       .set('Accept', 'application/json');
 
     //check that the slip can be vacated
