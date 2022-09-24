@@ -15,7 +15,7 @@ _Please note: data will be reset on initization, but will remain between api cal
 
 ## Usage
 
-Utilizing an API application (postman) or `curl` the following commands are accessible on `localhost:8080/boat-slips`
+Utilizing an API application (postman) or `curl` the following commands are accessible on `localhost:8080`
 
 - `GET /boat-slips` - gets all the avaliable boat slips and their vacnacies
 - `POST /boat-slips` - allows a boat to be put into port utilizing a body of `{"vesselName" : string}`
