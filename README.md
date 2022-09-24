@@ -23,7 +23,7 @@ Utilizing an API application the following commands are accessible on `localhost
 
 ## Automated testing
 
-Automated tests have been created, these can be ran via `npm test`
+Automated tests have been created, these can be ran via `npm test` within a terminal
 
 ## Design jusifitcation
 
@@ -35,3 +35,4 @@ Automated tests have been created, these can be ran via `npm test`
 
 - Use PATCH instead of POST for updating vessels into vacancies
 - Use POST to create new slips
+- Create a UI to see the various slips and their currrent status

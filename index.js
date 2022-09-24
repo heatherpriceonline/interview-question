@@ -4,6 +4,7 @@ const port = 8080;
 
 app.use(express.json());
 
+//create initial 3 boatslips
 let boatSlips = [
   {
     slipNumber: 1,
